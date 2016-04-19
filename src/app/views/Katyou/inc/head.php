@@ -11,7 +11,7 @@
 			echo '<meta name="keywords" content="'. $_PAGE->getInfo('keyPage') .'" />';
 		}
 	?>
-	<meta name="generator" content="<?= $_PAGE->getInfo('nameProject'); ?> (1.0)" />
+	<meta name="generator" content="<?= $_PAGE->getInfo('nameProject').' ('. $_PAGE->getInfo('versionProject') .')'; ?>" />
 	<meta name="author" content="K-lenzo" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/css/style.css">

@@ -13,6 +13,6 @@
 		require_once($fileCore);
 	}
 
-	require_once('../app/views/inc/head.php');
-	require_once('../app/views/'. $_PAGE->getInfo('filePage') .'.php');
-	require_once('../app/views/inc/footer.php');
+	require_once('../app/views/'. $_PAGE->getInfo('template') .'/inc/head.php');
+	require_once('../app/views/'. $_PAGE->getInfo('template') .'/'. $_PAGE->getInfo('filePage') .'.php');
+	require_once('../app/views/'. $_PAGE->getInfo('template') .'/inc/footer.php');

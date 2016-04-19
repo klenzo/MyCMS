@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 19 Avril 2016 à 21:02
+-- Généré le :  Mar 19 Avril 2016 à 21:30
 -- Version du serveur :  5.6.29-1~dotdeb+7.1
 -- Version de PHP :  5.6.20-1~dotdeb+zts+7.1
 
@@ -19,6 +19,25 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `mabase`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cms_conf`
+--
+
+CREATE TABLE IF NOT EXISTS `cms_conf` (
+  `confid` int(10) unsigned NOT NULL,
+  `confslug` varchar(50) NOT NULL,
+  `confcontent` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `cms_conf`
+--
+
+INSERT INTO `cms_conf` (`confid`, `confslug`, `confcontent`) VALUES
+(1, 'conftemplate', 'Katyou');
 
 -- --------------------------------------------------------
 
@@ -82,6 +101,13 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 --
+-- Index pour la table `cms_conf`
+--
+ALTER TABLE `cms_conf`
+  ADD PRIMARY KEY (`confid`),
+  ADD KEY `confslug` (`confslug`);
+
+--
 -- Index pour la table `medias`
 --
 ALTER TABLE `medias`
@@ -109,6 +135,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour les tables exportées
 --
 
+--
+-- AUTO_INCREMENT pour la table `cms_conf`
+--
+ALTER TABLE `cms_conf`
+  MODIFY `confid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `medias`
 --

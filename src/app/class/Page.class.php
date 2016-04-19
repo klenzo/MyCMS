@@ -1,6 +1,9 @@
 <?php
 class Page {
 	protected $nameProject = 'MyCMS';
+	protected $versionProject = '0.2';
+
+	protected $template = 'Katyou';
 
 	protected $titlePage;
 	protected $filePage;
@@ -12,6 +15,7 @@ class Page {
 
 	public function __construct($DB, $page){
 		$this->DB = $DB;
+		$this->setTemplate();
 		$this->getPage($page);
 	}
 
@@ -47,6 +51,14 @@ class Page {
 		}else{
 			$this->errorCode = 404;
 			$this->filePage = 'error';
+		}
+	}
+
+	public function setTemplate()
+	{
+		$req = $this->DB->query('SELECT * FROM cms_conf WHERE confslug = "conftemplate"');
+		if( $res = $req->fetchObject() ){
+			$this->template = $res->confcontent;
 		}
 	}
 
