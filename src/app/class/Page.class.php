@@ -6,6 +6,7 @@ class Page {
 	protected $filePage;
 	protected $descPage;
 	protected $contPage;
+	protected $keyPage;
 
 	protected $DB = false;
 
@@ -37,10 +38,11 @@ class Page {
 
 	public function setPage($res = false)
 	{
-		if( $res ) {	
+		if( $res ) {
 			$this->titlePage = $res->patitle;
 			$this->filePage = $res->patype;
-			$this->descPage = $res->padec;
+			$this->descPage = $res->padesc;
+			$this->keyPage = $res->pakeys;
 			$this->contPage = $res->pacontent;
 		}else{
 			$this->errorCode = 404;
@@ -60,4 +62,4 @@ class Page {
 		return $this->$info;
 	}
 }
-	
+

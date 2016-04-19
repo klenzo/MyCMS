@@ -1,7 +1,7 @@
 <?php
 	if (isset($_GET['page']) && !empty($_GET['page'])) {
 		$page = $_GET['page'];
-	}else{ 
+	}else{
 		// A changer pour la page par défaut, false utilise la page par défaut dans la BDD
 		$page = false;
 	}

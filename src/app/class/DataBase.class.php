@@ -7,7 +7,7 @@ class DataBase
     private $password;
     private $dbname;
     protected $pdo = false;
-    public function __construct($host = 'localhost', $dbname = 'mycms', $username = 'root', $password = '0000')
+    public function __construct($host = 'localhost', $dbname = 'mabase', $username = 'developer', $password = 'password')
     {
         $this->host = $host;
         $this->dbname = $dbname;
@@ -18,6 +18,7 @@ class DataBase
     {
         try {
             $this->pdo = new PDO('mysql:host='.$this->host.';dbname='.$this->dbname, $this->username, $this->password);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->pdo;
         } catch (Exception $e) {
             return 'Connexion échoué : ' . $e->getMessage();
