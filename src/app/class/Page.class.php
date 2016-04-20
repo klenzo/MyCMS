@@ -17,9 +17,11 @@ class Page {
 	protected $generatPage;
 
 	protected $DB = false;
+	protected $page;
 
 	public function __construct($DB, $page){
 		$this->DB = $DB;
+		$this->page;
 		$this->getPage($page);
 	}
 
