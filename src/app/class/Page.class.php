@@ -1,5 +1,7 @@
 <?php
 class Page {
+	protected $author = 'K-lenzo';
+	
 	protected $nameProject = 'MyCMS';
 	protected $versionProject = '0.2';
 
@@ -10,6 +12,8 @@ class Page {
 	protected $descPage;
 	protected $contPage;
 	protected $keyPage;
+
+	protected $generatPage;
 
 	protected $DB = false;
 
@@ -48,6 +52,7 @@ class Page {
 			$this->descPage = $res->padesc;
 			$this->keyPage = $res->pakeys;
 			$this->contPage = $res->pacontent;
+			$this->generator = $this->nameProject .' ('. $this->versionProject .')';
 		}else{
 			$this->errorCode = 404;
 			$this->filePage = 'error';
