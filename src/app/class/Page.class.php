@@ -1,11 +1,12 @@
 <?php
 class Page {
 	protected $author = 'K-lenzo';
-	
+
 	protected $nameProject = 'MyCMS';
 	protected $versionProject = '0.2';
 
-	protected $template = 'Katyou';
+	protected $template;
+	protected $dirAdmin = 'cockpit';
 
 	protected $titlePage;
 	protected $filePage;
@@ -19,7 +20,6 @@ class Page {
 
 	public function __construct($DB, $page){
 		$this->DB = $DB;
-		$this->setTemplate();
 		$this->getPage($page);
 	}
 
