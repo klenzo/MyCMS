@@ -1,8 +1,8 @@
 <?php
 	session_start();
-	
-	function myAutoloader($class) {
-		require_once('../app/class/' . ucfirst($class) . '.class.php');
+
+	function myAutoloader($class, $parent = '') {
+		require_once('../app/class/' . $parent . $class . '.class.php');
 	}
 	spl_autoload_register('myAutoloader');
 	$_DB = new DataBase();

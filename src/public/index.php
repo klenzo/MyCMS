@@ -20,6 +20,9 @@
 		require_once('themes/'. $_PAGE->getInfo('template') .'/'. $_PAGE->getInfo('filePage') .'.php');
 		require_once('themes/'. $_PAGE->getInfo('template') .'/inc/footer.php');
 	}else{
+
+		require_once '../app/cockpit/controllers/cockpit.controllers.php';
+
 		$fileController = '../app/cockpit/controllers/'. $_PAGE->getInfo('filePage') .'.controllers.php';
 		if( file_exists( $fileController ) ){
 			require_once($fileController);
