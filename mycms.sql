@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 19 Avril 2016 à 21:30
+-- Généré le :  Jeu 21 Avril 2016 à 20:40
 -- Version du serveur :  5.6.29-1~dotdeb+7.1
 -- Version de PHP :  5.6.20-1~dotdeb+zts+7.1
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `cms_conf` (
 --
 
 INSERT INTO `cms_conf` (`confid`, `confslug`, `confcontent`) VALUES
-(1, 'conftemplate', 'Katyou');
+(1, 'conftemplate', 'default');
 
 -- --------------------------------------------------------
 
@@ -72,14 +72,15 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `patime` int(10) unsigned NOT NULL,
   `paroot` int(11) NOT NULL DEFAULT '0',
   `paorder` tinyint(4) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `pages`
 --
 
 INSERT INTO `pages` (`paid`, `paslug`, `patitle`, `patype`, `padesc`, `pakeys`, `pacontent`, `paparent`, `pastatut`, `patime`, `paroot`, `paorder`) VALUES
-(1, 'home', 'Accueil', 'page', 'Hello, it''s my home page', 'home, page', 'Hello world !', 0, 1, 1461097120, 1, 0);
+(1, 'home', 'Accueil', 'page', 'Hello, it''s my home page', 'home, page', 'Hello world !', 0, 1, 1461097120, 1, 0),
+(2, 'login', 'Login', 'login', '', '', '', 0, 1, 1461270894, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ ALTER TABLE `medias`
 -- AUTO_INCREMENT pour la table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `paid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `paid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
