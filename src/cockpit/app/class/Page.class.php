@@ -6,7 +6,6 @@ class Page {
     protected $versionProject = '0.2';
 
     protected $template;
-    protected $dirAdmin = 'cockpit';
 
     protected $titlePage;
     protected $filePage;
@@ -27,17 +26,19 @@ class Page {
 
     public function getPage($page)
     {
+        $this->setTemplate();
+
         if( $page != false ){
             $page = strip_tags( htmlspecialchars( $page ) );
 
-            $req = $this->DB->query('SELECT * FROM pages_admin WHERE paslug = ?', $page);
+            $req = $this->DB->query('SELECT * FROM pages WHERE paslug = ?', $page);
             if( $res = $req->fetchObject() ){
                 $this->setPage($res);
             }else{ $page = false; }
         }
 
         if( $page == false ){
-            $req = $this->DB->query('SELECT * FROM pages_admin WHERE paroot = 1');
+            $req = $this->DB->query('SELECT * FROM pages WHERE paroot = 1');
             if( $res = $req->fetchObject() ){
                 $this->setPage($res);
             }else{
@@ -63,7 +64,7 @@ class Page {
 
     public function setTemplate()
     {
-        $req = $this->DB->query('SELECT * FROM cms_conf WHERE confslug = "conftemplate"');
+        $req = $this->DB->query('SELECT * FROM cms_conf WHERE confslug = "conftemplatecockpit"');
         if( $res = $req->fetchObject() ){
             $this->template = $res->confcontent;
         }

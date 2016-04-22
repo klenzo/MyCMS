@@ -6,7 +6,6 @@ class Page {
     protected $versionProject = '0.2';
 
     protected $template;
-    protected $dirAdmin = 'cockpit';
 
     protected $titlePage;
     protected $filePage;
@@ -27,6 +26,8 @@ class Page {
 
     public function getPage($page)
     {
+        $this->setTemplate();
+
         if( $page != false ){
             $page = strip_tags( htmlspecialchars( $page ) );
 
@@ -63,7 +64,7 @@ class Page {
 
     public function setTemplate()
     {
-        $req = $this->DB->query('SELECT * FROM cms_conf WHERE confslug = "conftemplate"');
+        $req = $this->DB->query('SELECT * FROM cms_conf WHERE confslug = "conftemplateweb"');
         if( $res = $req->fetchObject() ){
             $this->template = $res->confcontent;
         }
