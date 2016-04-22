@@ -6,12 +6,12 @@
 
 		$_PAGE->setTemplate();
 
-		$fileController = '../app/cockpit/controllers/'. $_PAGE->getInfo('filePage') .'.controllers.php';
+		$fileController = '../app/controllers/'. $_PAGE->getInfo('filePage') .'.controllers.php';
 		if( file_exists( $fileController ) ){
 			require_once($fileController);
 		}
 
-		$fileCore = '../app/cockpit/core/'. $_PAGE->getInfo('filePage') .'.core.php';
+		$fileCore = '../app/core/'. $_PAGE->getInfo('filePage') .'.core.php';
 		if( file_exists( $fileCore ) ){
 			require_once($fileCore);
 		}
