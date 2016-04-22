@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.5
+-- version 4.6.0
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 21 Avril 2016 à 20:40
--- Version du serveur :  5.6.29-1~dotdeb+7.1
+-- Généré le :  Ven 22 Avril 2016 à 15:58
+-- Version du serveur :  5.5.47-0+deb7u1-log
 -- Version de PHP :  5.6.20-1~dotdeb+zts+7.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -26,18 +26,19 @@ SET time_zone = "+00:00";
 -- Structure de la table `cms_conf`
 --
 
-CREATE TABLE IF NOT EXISTS `cms_conf` (
-  `confid` int(10) unsigned NOT NULL,
+CREATE TABLE `cms_conf` (
+  `confid` int(10) UNSIGNED NOT NULL,
   `confslug` varchar(50) NOT NULL,
   `confcontent` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `cms_conf`
 --
 
 INSERT INTO `cms_conf` (`confid`, `confslug`, `confcontent`) VALUES
-(1, 'conftemplate', 'default');
+(1, 'conftemplateweb', 'default'),
+(2, 'conftemplatecockpit', 'default');
 
 -- --------------------------------------------------------
 
@@ -45,12 +46,12 @@ INSERT INTO `cms_conf` (`confid`, `confslug`, `confcontent`) VALUES
 -- Structure de la table `medias`
 --
 
-CREATE TABLE IF NOT EXISTS `medias` (
-  `meid` int(10) unsigned NOT NULL,
+CREATE TABLE `medias` (
+  `meid` int(10) UNSIGNED NOT NULL,
   `metype` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `mepage` int(10) unsigned NOT NULL,
+  `mepage` int(10) UNSIGNED NOT NULL,
   `meslug` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `metime` int(10) unsigned NOT NULL
+  `metime` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -59,27 +60,27 @@ CREATE TABLE IF NOT EXISTS `medias` (
 -- Structure de la table `pages`
 --
 
-CREATE TABLE IF NOT EXISTS `pages` (
-  `paid` int(10) unsigned NOT NULL,
+CREATE TABLE `pages` (
+  `paid` int(10) UNSIGNED NOT NULL,
   `paslug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `patitle` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `patype` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `padesc` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `pakeys` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `pacontent` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `paparent` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `pastatut` tinyint(3) unsigned NOT NULL DEFAULT '1',
-  `patime` int(10) unsigned NOT NULL,
+  `paparent` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `pastatut` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
+  `patime` int(10) UNSIGNED NOT NULL,
   `paroot` int(11) NOT NULL DEFAULT '0',
   `paorder` tinyint(4) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `pages`
 --
 
 INSERT INTO `pages` (`paid`, `paslug`, `patitle`, `patype`, `padesc`, `pakeys`, `pacontent`, `paparent`, `pastatut`, `patime`, `paroot`, `paorder`) VALUES
-(1, 'home', 'Accueil', 'page', 'Hello, it''s my home page', 'home, page', 'Hello world !', 0, 1, 1461097120, 1, 0),
+(1, 'home', 'Accueil', 'home', 'Hello, it\'s my home page', 'home, page', 'Hello world !', 0, 1, 1461097120, 1, 0),
 (2, 'login', 'Login', 'login', '', '', '', 0, 1, 1461270894, 0, 1);
 
 -- --------------------------------------------------------
@@ -88,8 +89,8 @@ INSERT INTO `pages` (`paid`, `paslug`, `patitle`, `patype`, `padesc`, `pakeys`, 
 -- Structure de la table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `uid` int(10) unsigned NOT NULL,
+CREATE TABLE `users` (
+  `uid` int(10) UNSIGNED NOT NULL,
   `uname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `ufname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `umail` varchar(160) COLLATE utf8_unicode_ci NOT NULL,
@@ -140,22 +141,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `cms_conf`
 --
 ALTER TABLE `cms_conf`
-  MODIFY `confid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `confid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `medias`
 --
 ALTER TABLE `medias`
-  MODIFY `meid` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `meid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `paid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `paid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `uid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
