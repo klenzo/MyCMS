@@ -1,5 +1,5 @@
 <div class="warp">
-    <?= $_PAGE->getInfo('contPage'); ?>
+    <?= getPage('contPage'); ?>
 
     <form action="" method="POST" class="formLoginCockpit">
         <div class="imgFormCockpit"></div>

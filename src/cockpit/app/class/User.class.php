@@ -5,6 +5,7 @@
     class User
     {
         
+        protected $logged = false;
         protected $conect = false;
         protected $DB;
 
@@ -17,10 +18,15 @@
 
         public function verifUser($id, $token)
         {
-            return $this->conect;
+            return $this->logged;
         }
 
         public function getInfo($info){
             return $this->$info;
+        }
+
+        public function getConect()
+        {
+            return $this->conect;
         }
     }
