@@ -32,3 +32,9 @@
 		$aff = (bool) $aff;
 		if( $aff ){ return $code; }else{ echo $code; }
 	}
+
+	function getPage($val)
+	{
+		global $_PAGE;
+		return $_PAGE->getInfo($val);
+	}

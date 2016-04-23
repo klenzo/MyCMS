@@ -1,4 +1,108 @@
-*{padding:0;margin:0;box-sizing:border-box;}
-body{
-	background-color: #0766DC;
+@import url('fonts');
+@import url('mixins');
+*{padding:0;margin:0;box-sizing:border-box;outline:none;text-decoration:none;color:inherit;}
+body {
+	background-color: @body_bgColor;
+	color: @body_color;
+	font-family: @body_fFamily;
+	font-size: @body_fSize;
+}
+.warp {
+	width: 100%;
+}
+
+
+/* *** login *** */
+
+    .formLoginCockpit{
+        @imgFormCockpitTaille: 150px;
+
+        max-width: 300px;
+        margin: 10%  auto;
+        background-color: #FFF;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 2px -1px #292929;
+        position: relative;
+        padding-top: (@imgFormCockpitTaille / 2) + 20px;
+        text-align: center;
+        #txtFormCockpit{
+            display: block;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            padding: 5px;
+        }
+        .imgFormCockpit{
+            box-shadow: 0 -2px 2px -1px #AAA;
+            background-image: url('../img/loginImage.png');
+            background-color: #FFF;
+            border: 3px solid #FFF;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position: 50%;
+            border-radius: 50%;
+            width: @imgFormCockpitTaille;
+            height: @imgFormCockpitTaille;
+            left: 25%;
+            position: absolute;
+            top: -(@imgFormCockpitTaille / 2);
+        }
+        .group-form{
+            margin: 5px 0;
+            input{
+                width: 100%;
+                height: 35px;
+                padding: 0 10px;
+                border-radius: 3px;
+                border: none;
+                background-color: #F0F0F0;
+                &:hover, &:focus{background-color: #F6F6F6}
+            }
+        }
+        button{
+            padding: 0 20px;
+            height: 30px;
+            border: none;
+            font-weight: 700;
+            color: #FFF;
+            font-family: sans-serif;
+            display: inline-block;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: rgb(52, 152, 219);
+            &:hover{background-color: rgb(41, 128, 185);}
+        }
+    }
+
+/* *** /login *** */
+
+
+.aside{
+	width: @aside_width;
+	background-color: @aside_bgColor;
+	color: @aside_color;
+	font-family: @aside_fFamily;
+	font-size: @aside_fSize;
+	font-weight: @aside_fWeight;
+	padding: @aside_padding;
+	.imgAside{
+		width: 100%;
+		height: @aside_width * 0.75;
+		background-color: lighten(@aside_bgColor, 10%);
+		background-image: @imgAside_bgImg;
+		background-repeat: no-repeat;
+		background-position: 50%;
+		background-size: auto 100%;
+	}
+	.navAdmin{
+		list-style-type: none;
+		padding: 5px 0;
+		li .linkNavAdmin{
+			height: @linkNavAdmin_height;
+			line-height: @linkNavAdmin_height;
+			padding: @linkNavAdmin_padding;
+			font-size: @linkNavAdmin_fSize;
+		}
+	}
 }
