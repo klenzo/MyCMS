@@ -14,8 +14,11 @@
 		// Regex pour l'id
 		define('REGEX_ID', '/^[0-9]+$/');
 
-	require_once $dirApp .'lang/fr/global.php';
-
 	$_DB = new DataBase();
+	$_CONFIG = new Config($_DB);
+	
+	require_once $dirApp .'lang/'. $_CONFIG->get('langdir') .'/global.php';
+
 	$_USER = new User($_DB);
+
 	require_once('functions.php');
