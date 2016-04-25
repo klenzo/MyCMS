@@ -2,7 +2,6 @@
 	
 	// xcnjrf = Token  -- lwxfe = id
 	if( isset($_SESSION['xcnjrf']) && preg_match('/^[a-zA-Z0-9]{30,50}$/i', $_SESSION['xcnjrf']) && isset($_SESSION['lwxfe']) && preg_match('/^[0-9]+$/', $_SESSION['lwxfe']) ){
-
 		$_USER = new User($_SESSION['lwxfe'], $_SESSION['xcnjrf'], $_DB);
 		$_CONECT = $_USER->getConect();
 	}else{
