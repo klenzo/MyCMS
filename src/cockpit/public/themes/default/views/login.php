@@ -1,5 +1,8 @@
 <div class="warp">
     <?= getPage('contPage'); ?>
+	
+	<?php // var_dump( User::CryptMyPass('1234') ); ?>
+	<?php // var_dump(User::GenereMyToken()); ?>
 
     <form action="" method="POST" class="formLoginCockpit">
         <div class="imgFormCockpit"></div>

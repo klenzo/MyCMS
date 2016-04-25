@@ -2,6 +2,7 @@
 @import url('mixins');
 @import url('global');
 *{padding:0;margin:0;box-sizing:border-box;outline:none;text-decoration:none;color:inherit;}
+html{min-height:100%;}
 body {
 	background-color: @body_bgColor;
 	color: @body_color;
@@ -10,6 +11,8 @@ body {
 }
 .warp {
 	width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 
@@ -75,12 +78,11 @@ body {
             &:hover{background-color: rgb(41, 128, 185);}
         }
     }
-
 /* *** /login *** */
 
 
 .aside{
-	width: @aside_width;
+    height: 100%;
 	background-color: @aside_bgColor;
 	color: @aside_color;
 	font-family: @aside_fFamily;
@@ -89,7 +91,7 @@ body {
 	padding: @aside_padding;
 	.imgAside{
 		width: 100%;
-		height: @aside_width * 0.75;
+		height: 150px;
 		background-color: lighten(@aside_bgColor, 10%);
 		background-image: @imgAside_bgImg;
 		background-repeat: no-repeat;
@@ -104,6 +106,24 @@ body {
 			line-height: @linkNavAdmin_height;
 			padding: @linkNavAdmin_padding;
 			font-size: @linkNavAdmin_fSize;
+            display: block;
+            .iconAside{
+                width: @linkNavAdmin_height; 
+                text-align: center;
+                height: @linkNavAdmin_height; 
+                line-height: @linkNavAdmin_height; 
+                display: inline-block; 
+                float: left;
+            }
+            &:hover{
+                background-color: lighten(@aside_bgColor, 5%);
+                color: @color_hover;
+            }
 		}
 	}
+}
+
+.section{
+    background-color: #F50;
+    min-height: 50px;
 }
