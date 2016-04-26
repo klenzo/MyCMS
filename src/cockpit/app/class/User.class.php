@@ -45,7 +45,7 @@
                 }
             }
             if( !$error ){
-                $req = $this->DB->query('SELECT * FROM users WHERE '.$type.' = ? AND '.$typeTwo.' = ?', [$identif, $word]);
+                $req = $this->DB->query('SELECT * FROM cms_users WHERE '.$type.' = ? AND '.$typeTwo.' = ?', [$identif, $word]);
                 if( $res = $req->fetchObject() ){ 
                     $this->conect = $res;
                     $_SESSION[SESSION_TOKEN] = $res->utoken;

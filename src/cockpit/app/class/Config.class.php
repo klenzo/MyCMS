@@ -17,6 +17,7 @@ class Config
 		$req = $this->DB->query('SELECT * FROM `cms_conf`');
 		while( $res = $req->fetchObject() ){
 			$arr[ $res->confslug ] = $res->confcontent;
+			// define($res->confslug, $res->confcontent);
 		}
 		$this->confDB = (object) $arr;
 	}

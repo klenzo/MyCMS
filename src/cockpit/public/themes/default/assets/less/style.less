@@ -1,23 +1,23 @@
 @import url('fonts');
 @import url('mixins');
 @import url('global');
-*{padding:0;margin:0;box-sizing:border-box;outline:none;text-decoration:none;color:inherit;}
-html{min-height:100%;}
+*{padding:0;margin:0;box-sizing:border-box;outline:none;text-decoration:none;color:inherit;transition: all 0.2s ease-in;}
+html{height:100%;}
 body {
-	background-color: @body_bgColor;
-	color: @body_color;
-	font-family: @body_fFamily;
-	font-size: @body_fSize;
+    background-color: @body_bgColor;
+    color: @body_color;
+    font-family: @body_fFamily;
+    font-size: @body_fSize;
+    height: 100%;
 }
 .warp {
-	width: 100%;
+    width: 100%;
     height: 100%;
-    position: relative;
+    overflow: auto;
 }
 
 
 /* *** login *** */
-
     .formLoginCockpit{
         @imgFormCockpitTaille: 150px;
 
@@ -82,49 +82,141 @@ body {
 
 
 .aside{
-    height: 100%;
-	background-color: @aside_bgColor;
-	color: @aside_color;
-	font-family: @aside_fFamily;
-	font-size: @aside_fSize;
-	font-weight: @aside_fWeight;
-	padding: @aside_padding;
-	.imgAside{
-		width: 100%;
-		height: 150px;
-		background-color: lighten(@aside_bgColor, 10%);
-		background-image: @imgAside_bgImg;
-		background-repeat: no-repeat;
-		background-position: 50%;
-		background-size: auto 100%;
-	}
-	.navAdmin{
-		list-style-type: none;
-		padding: 5px 0;
-		li .linkNavAdmin{
-			height: @linkNavAdmin_height;
-			line-height: @linkNavAdmin_height;
-			padding: @linkNavAdmin_padding;
-			font-size: @linkNavAdmin_fSize;
+    min-height: 100%;
+    background-color: @aside_bgColor;
+    color: @aside_color;
+    font-family: @aside_fFamily;
+    font-size: @aside_fSize;
+    font-weight: @aside_fWeight;
+    padding: @aside_padding;
+    left: 0;
+    .imgAside{
+        width: 100%;
+        height: 150px;
+        background-color: lighten(@aside_bgColor, 10%);
+        background-image: @imgAside_bgImg;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: auto 100%;
+        position: relative;
+        overflow: hidden;
+        #pseudoAside{
+            position: absolute;
+            display: block;
+            bottom: -25%;
+            width: 100%;
+            padding: 5px 10px;
+            text-align: center;
+            background-color: darken(@aside_bgColor, 20%);
+        }
+        &:hover #pseudoAside{bottom: 0;}
+    }
+    .navAdmin{
+        list-style-type: none;
+        li .linkNavAdmin, li .sub-linkNavAdmin{
+            height: @linkNavAdmin_height;
+            line-height: @linkNavAdmin_height;
+            padding: @linkNavAdmin_padding;
+            font-size: @linkNavAdmin_fSize;
             display: block;
             text-transform: capitalize;
             .iconAside{
                 width: @linkNavAdmin_height; 
                 text-align: center;
+                font-size: @linkNavAdmin_fSize;
                 height: @linkNavAdmin_height; 
-                line-height: @linkNavAdmin_height; 
+                line-height: @linkNavAdmin_height;
                 display: inline-block; 
                 float: left;
             }
-            &:hover{
-                background-color: lighten(@aside_bgColor, 5%);
-                color: #292929;
+            &:hover, &.active{
+                background-color: darken(@aside_bgColor, 5%);
             }
-		}
-	}
+        }
+        li .sub-linkNavAdmin{
+            font-size: @linkNavAdmin_fSize - 3;
+            padding: @linkNavAdmin_padding;
+            background-color: darken(@aside_bgColor, 15%);
+            .iconAside{
+                width: @linkNavAdmin_height + 2; 
+                text-align: center;
+                font-size: @linkNavAdmin_fSize - 3;
+                height: @linkNavAdmin_height; 
+                line-height: @linkNavAdmin_height;
+                display: inline-block; 
+                float: left;
+            }
+            &:hover, &.active{ background-color: darken(@aside_bgColor, 20%); }
+        }
+    
+        .subAside{
+            display: none;
+        }
+        .liAside:hover, .liAside.activeAside{
+            & > .subAside{
+                display: block;
+            }
+        }
+
+    }
 }
 
 .section{
-    background-color: #F50;
-    min-height: 50px;
+    min-height: 100%;
+    right: 0;
+    box-shadow: -3px 0 3px -2px #292929;
+    .topSection{
+        height: @topSection_height;
+        font-weight: 800;
+        color: @aside_color;
+        background-color: @aside_bgColor;
+        padding: @topSectionVPadding @topSectionHPadding;
+        .iconTopSection{
+            height: @topSection_height - ( 2 * @topSectionVPadding );
+            line-height: @topSection_height - ( 2 * @topSectionVPadding );
+            width: @topSection_height - ( 2 * @topSectionVPadding );
+            text-align: center;
+            cursor: pointer;
+            display: inline-block;
+            font-size: @iconTopSection_fSize;
+            position: relative;
+            &:hover{
+                background-color: darken(@aside_bgColor, 10%);
+                & > .dropDown-topSection{display: block;}
+            }
+        }
+    
+        .dropDown-topSection{
+            list-style-type: none;
+            position: absolute;
+            right: 0;
+            background-color: darken(@aside_bgColor, 10%);
+            font-size: 16px;
+            text-align: left;
+            min-width: 200px;
+            display: none;
+            li a{
+                height: 35px;
+                line-height: 35px;
+                display: block;
+                overflow: auto;
+                text-transform: capitalize;
+                i{
+                    display: inline-block;
+                    float: left;
+                    width: 35px;
+                    text-align: center;
+                    height: 35px;
+                    line-height: 35px;
+                    margin-right: 5px;
+                }
+                &:hover{background-color: darken(@aside_bgColor, 5%);}
+            }
+        }
+
+    }
+
+    .container{
+        padding: @container_padding;
+    }
 }

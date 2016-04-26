@@ -38,3 +38,9 @@
 		global $_PAGE;
 		return $_PAGE->getInfo($val);
 	}
+
+	function getConfig($val)
+	{
+		global $_CONFIG;
+		return $_CONFIG->get($val);
+	}

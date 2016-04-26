@@ -31,14 +31,14 @@ class Page {
         if( $page != false ){
             $page = strip_tags( htmlspecialchars( $page ) );
 
-            $req = $this->DB->query('SELECT * FROM pages WHERE paslug = ?', $page);
+            $req = $this->DB->query('SELECT * FROM cms_pages WHERE paslug = ?', $page);
             if( $res = $req->fetchObject() ){
                 $this->setPage($res);
             }else{ $page = false; }
         }
 
         if( $page == false ){
-            $req = $this->DB->query('SELECT * FROM pages WHERE paroot = 1');
+            $req = $this->DB->query('SELECT * FROM cms_pages WHERE paroot = 1');
             if( $res = $req->fetchObject() ){
                 $this->setPage($res);
             }else{
