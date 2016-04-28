@@ -27,10 +27,11 @@ class Config
 		if( $val ){
 			if( $val == 'langdir' ){
 				if( !$this->langDir ){	
-					$req = $this->DB->query('SELECT langdir FROM cms_lang WHERE langcode = ?', $this->confDB->lang_default);
+					$req = $this->DB->query('SELECT langdir, langcode FROM cms_lang WHERE langcode = ?', $this->confDB->lang_default);
 
 					$res = $req->fetchObject();
 					$this->langDir = $res->langdir;
+					define('LANG', $res->langcode);
 				}
 
 				return $this->langDir;

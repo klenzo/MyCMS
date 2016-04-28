@@ -26,7 +26,11 @@
 				<a href="/addons/add" class="sub-linkNavAdmin"><i class="fa fa-plus iconAside"></i><?= W_ADD; ?></a>
 			</ul>
 		</li>
-		<li class="liAside"><a href="/tools" class="linkNavAdmin"><i class="fa fa-wrench iconAside"></i><?= W_TOOLS; ?></a></li>
+		<li class="liAside"><a href="/tools" class="linkNavAdmin"><i class="fa fa-wrench iconAside"></i><?= W_TOOLS; ?></a>
+			<ul class="subAside">
+				<a href="/tools/infos-sys" class="sub-linkNavAdmin"><i class="fa fa-info-circle iconAside"></i><?= W_TOOLS_INFOS; ?></a>
+			</ul>
+		</li>
 		<li class="liAside"><a href="/settings" class="linkNavAdmin"><i class="fa fa-cogs iconAside"></i><?= W_SETTINGS; ?></a>
 			<ul class="subAside">
 				<a href="/settings/global" class="sub-linkNavAdmin"><i class="fa fa-cog iconAside"></i><?= W_SETTINGS_GLOBAL; ?></a>

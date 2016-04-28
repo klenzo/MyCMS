@@ -15,6 +15,8 @@ class Page {
 
     protected $generatPage;
 
+    protected $varPage = array();
+
     protected $DB = false;
     protected $page;
 
@@ -31,14 +33,14 @@ class Page {
         if( $page != false ){
             $page = strip_tags( htmlspecialchars( $page ) );
 
-            $req = $this->DB->query('SELECT * FROM cms_pages WHERE paslug = ?', $page);
+            $req = $this->DB->query('SELECT * FROM cms_pages WHERE paslug = ? AND palang = ?', [$page, LANG]);
             if( $res = $req->fetchObject() ){
                 $this->setPage($res);
             }else{ $page = false; }
         }
 
         if( $page == false ){
-            $req = $this->DB->query('SELECT * FROM cms_pages WHERE paroot = 1');
+            $req = $this->DB->query('SELECT * FROM cms_pages WHERE paroot = 1 AND palang = ?', LANG);
             if( $res = $req->fetchObject() ){
                 $this->setPage($res);
             }else{

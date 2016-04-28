@@ -10,8 +10,13 @@
 		define('W_USERS_ROLE', 'permissions');
 	define('W_PLUGINS', 'plugins');
 	define('W_TOOLS', 'outils');
+		define('W_TOOLS_INFOS', 'infos système');
 	define('W_SETTINGS', 'préférences');
 		define('W_SETTINGS_GLOBAL', 'généraux');
 		define('W_SETTINGS_THEMES', 'thèmes');
 
 	define('W_ADD', 'ajouter');
+
+
+// Pour le title seulement
+	define('W_LOGIN', 'login');
