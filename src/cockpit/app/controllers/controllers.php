@@ -20,4 +20,4 @@
 	require_once '../app/func/get.php';
 
 
-	echo "Vous êtes bien sur la page : ". getPage('filePage');
+	// echo "Vous êtes bien sur la page : ". getPage('filePage');

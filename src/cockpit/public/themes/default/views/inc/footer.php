@@ -5,8 +5,9 @@
 </div>
 <?php
 	}
+
+	echo getJS();
+
 ?>
-
-
 </body>
 </html>

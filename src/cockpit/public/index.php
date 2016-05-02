@@ -14,7 +14,7 @@
 		require_once $fileControllers;
 	}
 
-	$fileCore = $dirApp .'core/'. getPage('filePage') .'.php';
+	$fileCore = $dirApp .'core/'. getPage('filePage') .'.core.php';
 	if( file_exists($fileCore) ){
 		require_once $fileCore;
 	}
