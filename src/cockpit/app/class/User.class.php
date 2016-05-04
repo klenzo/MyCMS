@@ -4,10 +4,12 @@
     */
     class User
     {
+        protected $DB;
         
         protected $conect = false;
         protected $error = false;
-        protected $DB;
+        protected $listRang = false;
+        protected $listUser = false;
 
         function __construct($DB)
         {
@@ -82,4 +84,37 @@
             $pass = substr(SALT_PASS, 5, 5). sha1( '-'. $pass .'@' ) . substr(SALT_PASS, 12, 5);
             return crypt($pass, '$2y$07$'. SALT_PASS);
         }
+
+        public function getRang($val = false)
+        { // $val = slug
+            if( !$this->listRang ){
+                $req = $this->DB->query('SELECT * FROM cms_rang');
+                while( $res = $req->fetchObject() ){
+                    $this->listRang[$res->raslug] = $res;
+                }
+            }
+
+            if( $val ){
+                $return = $this->listRang[$val];
+            }else{
+                $return = $this->listRang;
+            }
+
+            return (object) $return;
+        }
+
+        public function getUsers(){
+            if( !$this->listUser ){
+                $users = array();
+                $req = $this->DB->query('SELECT * FROM cms_users');
+                while( $res = $req->fetchObject() ){
+                    $res->urang = $this->getRang($res->urang)->raname;
+                    $users[$res->uid] = $res;
+                }
+                $this->listUser = $users;
+            }
+
+            return $this->listUser;
+        }
+
     }

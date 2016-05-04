@@ -7,6 +7,12 @@
 		$_CONECT = false;
 	}
 
+	// Vérification de notifications
+	if(isset($_SESSION['result']) && is_bool($_SESSION['result'])){
+		$_NOTIF = $_SESSION['result'];
+		unset($_SESSION['result']);
+	}
+
 	if( !$_CONECT ){
 		$page = 'login'; // Envoie a la page login
 	}elseif (isset($_GET['page']) && !empty($_GET['page'])) {

@@ -39,13 +39,20 @@
 		return $_PAGE->getInfo($val);
 	}
 
+	function getWebPage($val = false)
+	{
+		global $_PAGE;
+		return $_PAGE->getWebPage($val);
+	}
+
 	function getConfig($val ) 
 	{
 		global $_CONFIG;
 		return $_CONFIG->get($val);
 	}
 
-	function getCSS($arr = false){		
+	function getCSS($arr = false)
+	{		
 		$theme = getPage('template');
 
 		$dirname = 'themes/'. $theme .'/assets/css/';
@@ -79,36 +86,63 @@
 		return $result;
 	}
 
-	function getJS($arr = false){		
-		$theme = getPage('template');
-
-		$dirname = 'themes/'. $theme .'/assets/js/';
-		$dir = opendir($dirname) or die('Erreur de listage : le répertoire '. $dirname .' n\'existe pas');
-		$files = array(); // on déclare le tableau contenant le nom des fichiers
+	function getJS($arr = false, $aff = 0)
+	{		
 		$result = '';
+		$theme = getPage('template');
+		if( !$arr ){
+			$dirname = 'themes/'. $theme .'/assets/js/';
+			$dir = opendir($dirname) or die('Erreur de listage : le répertoire '. $dirname .' n\'existe pas');
+			$files = array(); // on déclare le tableau contenant le nom des fichiers
+			while($element = readdir($dir)) {
+				if($element != '.' && $element != '..') {
+					$file = explode('.', $element);
+					$ext = end($file);
+					if (isset( $ext ) && in_array( $ext , array('js', 'JS'))) {
+						if( count($file) >= 3 ){
+							$file2 = array_pop($file);
+						}else{
+							$file2 = $file;
+						}
+				     	
+				     	$files[] = implode('.', $file2 );
+					}
+				}
+			}
+			closedir($dir);
 
+			sort($files);// pour le tri croissant, rsort() pour le tri décroissant
+			foreach ($files as $key => $value) {
+				$result .= '<script src="/'. $dirname.$value .'"></script>';
+			}
+		}else{
+			if( !is_array($arr) ){ $arr = array($arr); }
+			foreach ($arr as $key => $value) {
+				$result .= '<script src="/themes/'. $theme .'/assets/'. $value .'"></script>';
+			}
+		}
+
+		if( $aff == 0 ){return $result;}else{ echo $result; }
+	}
+
+	function getTypePage($patye = '', $class = '')
+	{
+		$theme = getConfig('conftemplateweb');
+
+		$dirname = WEB_DIR_ROOT .'public/themes/'. $theme .'/views/';
+		$dir = @opendir($dirname) or die('Erreur de listage : le répertoire '. $dirname .' n\'existe pas');
+		$files = array(); // on déclare le tableau contenant le nom des fichiers
 		while($element = readdir($dir)) {
 			if($element != '.' && $element != '..') {
 				$file = explode('.', $element);
 				$ext = end($file);
-				if (isset( $ext ) && in_array( $ext , array('js', 'JS'))) {
-					if( count($file) >= 3 ){
-						$file2 = array_pop($file);
-					}else{
-						$file2 = $file;
-					}
-			     	
-			     	$files[] = implode('.', $file2 );
+				if (isset( $ext ) && in_array( $ext , array('php', 'PHP'))) {
+			     	$files[] = str_replace('.'.$ext, '', implode('.', $file));
 				}
 			}
 		}
-
 		closedir($dir);
 
 		sort($files);// pour le tri croissant, rsort() pour le tri décroissant
-		foreach ($files as $key => $value) {
-			$result .= '<script src="/'. $dirname.$value .'"></script>';
-		}
-
-		return $result;
+		return $files;
 	}

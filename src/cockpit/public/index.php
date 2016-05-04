@@ -1,9 +1,13 @@
 <?php
 	session_start();
 
+	// Définit le fuseau horaire par défaut à utiliser.
+	date_default_timezone_set('Europe/Paris');
+
 	$SITE_ROOT = str_replace('cockpit', 'www', $_SERVER['HTTP_HOST']);
 	if( !preg_match('/^(http)/i', $SITE_ROOT) ){ $SITE_ROOT = 'http://'.$SITE_ROOT; }
 	define('SITE_ROOT', $SITE_ROOT);
+	define('WEB_DIR_ROOT', '../../web/');
 
 	$dirApp = '../app/';
 	require_once $dirApp .'config/config.php';

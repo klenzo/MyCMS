@@ -1,0 +1,59 @@
+// global
+@color_hover: rgb(235,54,15);
+
+@color_info: rgb(71,131,223);
+	@color_infoHover: rgb(58,110,187);
+@color_error: rgb(235,54,15);
+	@color_errorHover: rgb(195,37,0);
+@color_success: rgb(0,224,117);
+	@color_successHover: rgb(0,191,100);
+
+// body
+@body_bgColor: #E9E9E9;
+@body_color: #292929;
+@body_fFamily: 'Jura', sans-serif;
+@body_fSize: 15px;
+
+// .aside
+@aside_bgColor: #0766DC;
+@aside_color: #FFF;
+@aside_fFamily: @body_fFamily;
+@aside_fSize: 16px;
+@aside_fWeight: 700;
+@aside_padding: 0;
+	
+	// .imgAside
+	@imgAside_bgImg: url('../img/backNavImgAdmin.jpg');
+
+	// .navAdmin
+		// .linkNavAdmin
+		@linkNavAdmin_height: 35px;
+		@linkNavAdmin_padding: 0 5px;
+		@linkNavAdmin_fSize: 16px;
+		@linkNavAdmin_fWeight: 600;
+
+// .section
+	@section_bgColor: @body_bgColor;
+	// .topSection
+	@topSection_height: 50px;
+	@topSectionVPadding: 0;
+	@topSectionHPadding: 0;
+		// .iconTopSection
+		@iconTopSection_fSize: @topSection_height * 0.5;
+
+	// .container
+	@container_padding: 5px;
+
+// .myTable
+@table_bgColor: #FFF;
+@table_color: #292929;
+@table_fSize: 14px;
+	// .titleTable
+	@table_title_bgColor: lighten(@aside_bgColor, 15%);
+	@table_title_color: @aside_color;
+
+	// tr
+	@table_tr0_bgColor: #FFF;
+	@table_tr0_color: #292929;
+	@table_tr1_bgColor: lighten(@aside_bgColor, 40%);
+	@table_tr1_color: #292929;

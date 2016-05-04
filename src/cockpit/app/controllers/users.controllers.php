@@ -1,5 +1,5 @@
 <?php
-	$arr_action = array('add', 'role', 'see-all');
+	$arr_action = array('add', 'role', 'see-all', 'profil');
 
 	if( isset( $_GET['action'] ) && in_array($_GET['action'], $arr_action) ){
 		$action = strip_tags( str_replace(['"', "'", '--', '#'], '', $_GET['action']) );
