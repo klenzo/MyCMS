@@ -8,8 +8,8 @@
 
 	getJS(	[
 				'js/jquery.js',
-				'js/tableJs.js',
 				'lib/tinymce/tinymce.min.js',
+				'js/tableJs.js',
 				'js/app.js'
 			], 1);
 

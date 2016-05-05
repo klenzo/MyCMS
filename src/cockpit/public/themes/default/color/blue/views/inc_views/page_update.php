@@ -1,5 +1,8 @@
 <?php
 
+if( isset( $_POST['validate-update'] ) ){
+
+
 // Title		
 	if( isset( $_POST['title'] ) ){
 		$title = strip_tags( $_POST['title'] );
@@ -16,9 +19,9 @@
 	}else{ $statut = 2; }
  
 // Type
-	if( isset( $_POST['type'] ) && in_array($_POST['type'], [0,1,2]) ){
+	if( isset( $_POST['type'] ) && in_array($_POST['type'], getTypePage()) ){
 		$type = $_POST['type'];
-	}else{ $type = 2; }
+	}else{ $type = getTypePage()[0]; }
  
 // Descript
 	if( isset( $_POST['descript'] ) ){
@@ -41,4 +44,5 @@
 
 	$_SESSION['result'] = $return;
 
+}
 	header('location: /pages/edit/'.$_SLUG);

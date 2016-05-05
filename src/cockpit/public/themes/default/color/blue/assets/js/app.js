@@ -12,6 +12,15 @@ tinymce.activeEditor.uploadImages(function(success) {
 
 $(function(){
 
+	$('.textareaCounter').keypress(function() {
+		var nbrCaract = $(this).val().length,
+			limitCaract = $(this).attr('maxlength'),
+			idTextarea = $(this).attr('id');
+
+		var contentCounter = $('.countText[count-id='+ idTextarea +']').val();
+		console.log(contentCounter + 'dfs');
+	});
+
 	$('.liAside').click(function(e){
 		// e.preventDefault();
 		$(this + ' > .subAside').slideToggle();

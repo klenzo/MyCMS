@@ -1,5 +1,5 @@
 <?php
-	require_once $dirApp .'class/Autoloader.php';
+	require_once DIR_APP .'class/Autoloader.php';
 	Autoloader::register(); 
 
 	// Définition des constante SALT
@@ -17,7 +17,7 @@
 	$_DB = new DataBase();
 	$_CONFIG = new Config($_DB);
 	
-	require_once $dirApp .'lang/'. $_CONFIG->get('langdir') .'/global.php';
+	require_once DIR_APP .'lang/'. $_CONFIG->get('langdir') .'/global.php';
 
 	$_USER = new User($_DB);
 

@@ -146,3 +146,8 @@
 		sort($files);// pour le tri croissant, rsort() pour le tri décroissant
 		return $files;
 	}
+
+	function getNotif($txt, $statut)
+	{
+		return '<p class="notif notif-'. $statut .'">'. $txt .'</p>';
+	}

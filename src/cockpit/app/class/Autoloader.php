@@ -8,9 +8,8 @@ class Autoloader
 
 	static function autoload($class)
 	{
-		global $dirApp;
 		$class = str_replace(__NAMESPACE__, '', $class);
 		$class = str_replace('\\', '/', $class);
-		require_once $dirApp .'class/' . $class . '.class.php';
+		require_once DIR_APP .'class/' . $class . '.class.php';
 	}
 }

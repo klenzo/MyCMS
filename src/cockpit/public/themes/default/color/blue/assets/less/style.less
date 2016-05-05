@@ -282,12 +282,11 @@
             padding: 5px;
         }
 
-        .group-form{ overflow: auto; }
+        .group-form{ overflow: auto; padding: 5px; }
         
         .left-inPage{
             overflow: auto;
             .group-txt{
-                padding: 5px;
                 #titlePage{
                     width: 100%;
                     padding: 0 5px;
@@ -296,7 +295,6 @@
                 #contentPage{
                     width: 100%;
                     height: 350px;
-                    box-sizing: none;
                 }
             }
         }
@@ -309,6 +307,15 @@
                     height:35px;line-height:35px;
                     option{ padding: 5px; }
                 }
+            }
+            textarea{
+                padding: 5px;
+                min-height: 100px;
+                height: 100px;
+                max-height: auto;
+                border: none;
+                background-color: #F4F4F4;
+                resize: none;
             }
         }
 
